@@ -1,0 +1,33 @@
+.container {
+  padding-top: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  p {
+    font-size: 18px;
+  }
+}
+
+.inputArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  * + * {
+    margin-top: 2vh;
+  }
+
+  input {
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  button {
+    font-size: 18px;
+    width: 12rem;
+    border-radius: 5px;
+  }
+}

@@ -22,13 +22,13 @@ export type discordBot = {
 };
 
 async function FetchApiGet(path: string): Promise<apiResponse> {
-  let response = await fetch(`http://${process.env.REACT_APP_API_URL}/${path}`);
+  let response = await fetch(`${process.env.REACT_APP_API_URL}/${path}`);
   let result: apiResponse = await response.json();
   return result;
 }
 async function FetchApiPost<T>(path: string, body: object) {
   let response = await axios.post<T>(
-    `http://${process.env.REACT_APP_API_URL}/${path}`,
+    `${process.env.REACT_APP_API_URL}/${path}`,
     body
   );
   return response.data;

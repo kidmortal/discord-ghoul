@@ -22,8 +22,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
-            name: REACT_APP_API_URL
-            value: http://localhost:5000
+        - name: REACT_APP_API_URL
+          value: http://localhost:5000
         
       - name: ghoul-server
         image: kidmortal/ghoul-server

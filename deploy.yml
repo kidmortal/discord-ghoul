@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-ghoul
+  labels:
+    app: node
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+
+      - name: node
+        image: kidmortal/ghoul-front
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        
+      - name: node
+        image: kidmortal/ghoul-back
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

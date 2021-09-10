@@ -3,27 +3,27 @@ kind: Deployment
 metadata:
   name: discord-ghoul
   labels:
-    app: node
+    app: discord-ghoul
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: node
+      app: discord-ghoul
   template:
     metadata:
       labels:
-        app: node
+        app: discord-ghoul
     spec:
       containers:
 
-      - name: node
+      - name: ghoul-front
         image: kidmortal/ghoul-front
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
         
-      - name: node
-        image: kidmortal/ghoul-back
+      - name: ghoul-server
+        image: kidmortal/ghoul-server
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

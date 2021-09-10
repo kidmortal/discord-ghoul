@@ -9,6 +9,6 @@ COPY . .
 RUN yarn install
 # Inicializa a aplicação
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["yarn", "start"]

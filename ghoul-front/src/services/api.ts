@@ -1,30 +1,9 @@
 import axios from "axios";
+import { Discord } from "../models/Discord";
 
-type apiResponse = {
-  response: string;
-};
-
-export type discordBot = {
-  id: string;
-  email: string;
-  username: string;
-  avatar: string;
-  locale: string;
-  discriminator: string;
-  token: string;
-  verified: boolean;
-  mfa_enabled: boolean;
-  bot: boolean;
-  public_flags: number;
-  premium_type: number;
-  system: boolean;
-  flags: number;
-};
-
-async function FetchApiGet(path: string): Promise<apiResponse> {
-  let response = await fetch(`${process.env.REACT_APP_API_URL}/${path}`);
-  let result: apiResponse = await response.json();
-  return result;
+async function FetchApiGet<T>(path: string) {
+  let response = await axios.get<T>(`${process.env.REACT_APP_API_URL}/${path}`);
+  return response.data;
 }
 async function FetchApiPost<T>(path: string, body: object) {
   let response = await axios.post<T>(
@@ -35,7 +14,15 @@ async function FetchApiPost<T>(path: string, body: object) {
 }
 
 export function BotLogin(secret: string) {
-  return FetchApiPost<discordBot>("bot", {
+  return FetchApiPost<Discord.User>("bot", {
     secret,
   });
+}
+
+export function GetGuilds() {
+  return FetchApiGet<Discord.Guilds.Guild[]>("guilds");
+}
+
+export function GetBot() {
+  return FetchApiGet<Discord.User>("bot");
 }

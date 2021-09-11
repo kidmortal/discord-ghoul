@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { BotLogin, discordBot } from "../services/api";
+import { useEffect, useState } from "react";
+import { GuildList } from "../components/guildList/GuildList";
+import { Discord } from "../models/Discord";
+import { BotLogin, GetBot, GetGuilds } from "../services/api";
 import styles from "./Home.module.scss";
 
 export function HomePage() {
   const [secret, setSecret] = useState("");
-  const [bot, setBot] = useState({} as discordBot);
+  const [bot, setBot] = useState({} as Discord.User);
+  const [guilds, setGuilds] = useState([] as Discord.Guilds.Guild[]);
 
   function handleLogin() {
     if (secret)
@@ -13,6 +16,21 @@ export function HomePage() {
         if (r) setBot(r);
       });
   }
+
+  function handleGetGuilds() {
+    GetGuilds().then((r) => {
+      console.log(r);
+      setGuilds(r);
+    });
+  }
+
+  useEffect(() => {
+    GetBot().then((r) => {
+      if (r.id) {
+        setBot(r);
+      }
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -27,6 +45,9 @@ export function HomePage() {
           Bot name: {bot?.username && `${bot.username}#${bot.discriminator}`}{" "}
         </p>
       </div>
+      <div>
+        <GuildList guilds={guilds} />
+      </div>
       <div className={styles.inputArea}>
         <h3>Digita o secret ae</h3>
         <input
@@ -36,6 +57,7 @@ export function HomePage() {
         />
 
         <button onClick={() => handleLogin()}>Login :D</button>
+        <button onClick={() => handleGetGuilds()}>Ver servs</button>
       </div>
     </div>
   );

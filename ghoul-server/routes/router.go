@@ -11,7 +11,17 @@ func CreateRoutes(router *mux.Router) {
 
 	router.HandleFunc("/bot", func(rw http.ResponseWriter, r *http.Request) {
 		rw.Header().Set("Content-Type", "application/json")
+		controllers.HandleGetBot(rw, r)
+	}).Methods("GET")
+
+	router.HandleFunc("/bot", func(rw http.ResponseWriter, r *http.Request) {
+		rw.Header().Set("Content-Type", "application/json")
 		controllers.HandleBotLogin(rw, r)
-	}).Methods(http.MethodPost)
+	}).Methods("POST")
+
+	router.HandleFunc("/guilds", func(rw http.ResponseWriter, r *http.Request) {
+		rw.Header().Set("Content-Type", "application/json")
+		controllers.HandleBotGetGuilds(rw, r)
+	}).Methods("GET")
 
 }

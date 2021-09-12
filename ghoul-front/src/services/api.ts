@@ -26,7 +26,10 @@ export function GetGuilds() {
 export function GetBot() {
   return FetchApiGet<Discord.User>("bot");
 }
+<<<<<<< HEAD
 
 export function GetChannelMessages(channelId: string) {
   return FetchApiGet<Discord.Guilds.Message.Message[]>(`messages/${channelId}`);
 }
+=======
+>>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b

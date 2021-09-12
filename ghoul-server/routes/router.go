@@ -9,11 +9,14 @@ import (
 
 func CreateRoutes(router *mux.Router) {
 
+<<<<<<< HEAD
 	router.HandleFunc("/ws/{ChannelId}", func(rw http.ResponseWriter, r *http.Request) {
 		rw.Header().Set("Content-Type", "application/json")
 		controllers.HandleWebSocket(rw, r)
 	}).Methods("GET")
 
+=======
+>>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	router.HandleFunc("/bot", func(rw http.ResponseWriter, r *http.Request) {
 		rw.Header().Set("Content-Type", "application/json")
 		controllers.HandleGetBot(rw, r)
@@ -29,9 +32,12 @@ func CreateRoutes(router *mux.Router) {
 		controllers.HandleBotGetGuilds(rw, r)
 	}).Methods("GET")
 
+<<<<<<< HEAD
 	router.HandleFunc("/messages/{ChannelId}", func(rw http.ResponseWriter, r *http.Request) {
 		rw.Header().Set("Content-Type", "application/json")
 		controllers.HandleGetMessages(rw, r)
 	}).Methods("GET")
 
+=======
+>>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 }

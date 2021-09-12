@@ -2,31 +2,21 @@ package controllers
 
 import (
 	"encoding/json"
-<<<<<<< HEAD
 	"fmt"
-=======
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	"log"
 	"net/http"
 
 	"github.com/bwmarrin/discordgo"
-<<<<<<< HEAD
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-=======
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	"kidmortal.ghoul/services"
 	"kidmortal.ghoul/utils"
 )
 
-<<<<<<< HEAD
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 }
-=======
-var contador = 0
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 
 type loginParams struct {
 	Id     string `json:"id"`
@@ -53,23 +43,16 @@ func HandleBotLogin(rw http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-<<<<<<< HEAD
 	botUser, err := services.LoginDiscord(params.Secret)
 	if err != nil {
 		SendResponse(err.Error(), rw)
 		return
 	}
-=======
-	botUser := services.LoginDiscord(params.Secret)
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	jsonString, err := json.Marshal(botUser)
 	if err != nil {
 		log.Fatal("Erro marshal bot")
 	}
-<<<<<<< HEAD
 	fmt.Println("Success login")
-=======
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	rw.Write(jsonString)
 }
 
@@ -87,7 +70,6 @@ func HandleBotGetGuilds(rw http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal("marshal error")
 	}
-<<<<<<< HEAD
 	fmt.Println("Success get guilds")
 	rw.Write(j)
 }
@@ -109,8 +91,6 @@ func HandleGetMessages(rw http.ResponseWriter, r *http.Request) {
 		log.Fatal("marshal error")
 	}
 	fmt.Println("Success get messages")
-=======
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 	rw.Write(j)
 }
 
@@ -120,7 +100,6 @@ func HandleGetBot(rw http.ResponseWriter, r *http.Request) {
 		SendResponse(err.Error(), rw)
 		return
 	}
-<<<<<<< HEAD
 	fmt.Println("Success get bot")
 	rw.Write(StrucToByte(bot))
 }
@@ -137,8 +116,4 @@ func HandleWebSocket(rw http.ResponseWriter, r *http.Request) {
 	}
 	log.Println("Sucess websocket")
 	services.WebSocketChannelSession(ws, id)
-=======
-	rw.Write(StrucToByte(bot))
-
->>>>>>> 1ab8ec363a16fd463e56112578e07570abbdf02b
 }

@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+}
+
+.connection {
+  display: flex;
+  flex-direction: row;
+  font-size: 35px;
+  color: rgb(129, 196, 123);
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.container {
+  width: 30vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(179, 174, 174);
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(rgb(179, 174, 174), 10%);
+    transition: 0.3s;
+  }
+}
+
+.title {
+  display: flex;
+  font-size: 1rem;
+}
+
+.icon {
+  display: flex;
+  width: 20px;
+}
+
+.buttons {
+  display: flex;
+}

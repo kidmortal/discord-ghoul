@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.inputArea {
+  width: 90%;
+
+  input {
+    width: 95%;
+    height: 4vh;
+    margin: 1vh;
+    border-radius: 5px;
+    font-size: 25px;
+  }
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sendButton {
+  font-size: 30px;
+  color: rgba(178, 197, 175, 0.932);
+  &:hover {
+    color: darken(rgba(178, 197, 175, 0.932), 20%);
+    transition: 0.2s;
+  }
+  cursor: pointer;
+}

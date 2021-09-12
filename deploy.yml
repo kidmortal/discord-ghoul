@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-ghoul
+  labels:
+    app: discord-ghoul
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: discord-ghoul
+  template:
+    metadata:
+      labels:
+        app: discord-ghoul
+    spec:
+      containers:
+
+      - name: ghoul-front
+        image: kidmortal/ghoul-front
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_API_URL
+          value: http://localhost:5000
+        
+      - name: ghoul-server
+        image: kidmortal/ghoul-server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

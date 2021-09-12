@@ -1,0 +1,14 @@
+.container {
+  cursor: pointer;
+}
+
+.popoverBox {
+  width: 5vh;
+}
+
+.popoverInfo {
+  background-color: rgb(122, 214, 122);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}

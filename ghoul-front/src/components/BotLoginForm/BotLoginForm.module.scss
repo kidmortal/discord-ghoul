@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2rem;
+}
+
+.inputArea {
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    height: 80%;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  button {
+    height: 100%;
+    font-size: 18px;
+    width: 4rem;
+    border-radius: 5px;
+  }
+}

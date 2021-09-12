@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 1rem;
+}
+
+.guildList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scroll {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+
+  div + div {
+    margin-top: 10px;
+  }
+}
+
+.selected {
+  border: 1px red solid;
+}

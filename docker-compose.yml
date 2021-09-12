@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  front:
+    image: ghoul-front
+    build: ./ghoul-front/
+    restart: always
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    ports:
+      - "3000:3000"
+  server:
+    image: ghoul-server
+    build: ./ghoul-server/
+    ports:
+      - "5000:5000"

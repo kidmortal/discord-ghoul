@@ -4,7 +4,7 @@ services:
     image: ghoul-front
     build: ./ghoul-front/
     environment:
-      - REACT_APP_API_URL=http://localhost:5000
+      - REACT_APP_API_URL=http://server:5000
     ports:
       - "80:8080"
     networks:

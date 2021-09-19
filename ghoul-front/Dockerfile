@@ -7,4 +7,6 @@ COPY . .
 RUN yarn build
 
 FROM nginx:1.19-alpine AS server
-COPY --from=builder ./app/build /usr/share/nginx/html
+COPY --from=builder ./app/build /var/www
+COPY ./nginx.conf /etc/nginx/nginx.conf
+CMD ["nginx", "-g", "daemon off;"]

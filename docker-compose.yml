@@ -3,13 +3,19 @@ services:
   front:
     image: ghoul-front
     build: ./ghoul-front/
-    restart: always
     environment:
-      - REACT_APP_API_URL=server:5000
+      - REACT_APP_API_URL=http://localhost:5000
     ports:
       - "3000:3000"
+    networks:
+      - main
   server:
     image: ghoul-server
     build: ./ghoul-server/
     ports:
       - "5000:5000"
+    networks:
+      - main
+networks:
+  main:
+    driver: bridge

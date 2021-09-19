@@ -1,14 +1,12 @@
 # Imagem de Origem
-FROM node:14-alpine
-# Diretório de trabalho(é onde a aplicação ficará dentro do container).
+FROM node:14-alpine as build
 WORKDIR /app
-# Adicionando `/app/node_modules/.bin` para o $PATH
 ENV PATH /app/node_modules/.bin:$PATH
-# Instalando dependências da aplicação e armazenando em cache.
-COPY . .
+COPY . /app
 RUN yarn install
-# Inicializa a aplicação
+RUN yarn run build
 
-EXPOSE 3000
-
-CMD ["yarn", "start"]
+FROM nginx:1.16.0-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

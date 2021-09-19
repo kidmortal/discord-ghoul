@@ -8,5 +8,5 @@ RUN yarn build
 
 FROM nginx:1.19-alpine AS server
 COPY --from=builder ./app/build /var/www
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 CMD ["nginx", "-g", "daemon off;"]
